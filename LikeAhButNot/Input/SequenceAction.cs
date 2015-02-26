@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using WindowsInput;
 
 namespace LikeAhButNot.Input
 {
     public class SequenceAction
     {
         public SequenceAction NextAction { get; set; }
+
+        public virtual string Type { get; set; }
+        public virtual string Info { get; set; }
+
 
         public virtual void DoAction()
         {
