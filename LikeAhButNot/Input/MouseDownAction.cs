@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using WindowsInput;
 
 namespace LikeAhButNot.Input
 {
-    public class KeyPressAction : SequenceAction
+    public class MouseDownAction : SequenceAction
     {
-        public VirtualKeyCode KeyCode { get; set; }
+        public int Button { get; set; }
 
         public override void DoAction()
         {
-            InputSimulator.SimulateKeyPress(KeyCode);
         }
     }
 }

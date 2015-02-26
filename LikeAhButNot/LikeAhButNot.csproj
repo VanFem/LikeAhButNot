@@ -45,6 +45,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Input\DelayAction.cs" />
+    <Compile Include="Input\MouseClickAction.cs" />
+    <Compile Include="Input\MouseUpAction.cs" />
+    <Compile Include="Input\MouseDownAction.cs" />
+    <Compile Include="Input\KeyDownAction.cs" />
+    <Compile Include="Input\KeyUpAction.cs" />
     <Compile Include="Input\KeyPressAction.cs" />
     <Compile Include="Input\SequenceAction.cs" />
     <Compile Include="LikeAhButNotMainForm.cs">

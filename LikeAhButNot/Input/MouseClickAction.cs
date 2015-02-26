@@ -7,13 +7,12 @@ using WindowsInput;
 
 namespace LikeAhButNot.Input
 {
-    public class KeyPressAction : SequenceAction
+    public class MouseClickAction : SequenceAction
     {
-        public VirtualKeyCode KeyCode { get; set; }
+        public int Button { get; set; }
 
         public override void DoAction()
         {
-            InputSimulator.SimulateKeyPress(KeyCode);
         }
     }
 }
