@@ -7,18 +7,11 @@ using WindowsInput;
 
 namespace LikeAhButNot.Input
 {
-    public class KeyDownAction : SequenceAction
+    public class KeyDownAction : KeyboardActionBase
     {
-        public VirtualKeyCode KeyCode { get; set; }
-
         public override string Info
         {
             get { return string.Format("Key {0} down", Enum.GetName(typeof(VirtualKeyCode), KeyCode)); }
-        }
-
-        public override string Type
-        {
-            get { return "Keyboard"; }
         }
 
         public override void DoAction()

@@ -89,9 +89,11 @@
             this.infoDataGridViewTextBoxColumn});
             this.actionGrid.DataSource = this.sequenceActionBindingSource;
             this.actionGrid.Location = new System.Drawing.Point(12, 12);
+            this.actionGrid.MultiSelect = false;
             this.actionGrid.Name = "actionGrid";
             this.actionGrid.ReadOnly = true;
             this.actionGrid.RowHeadersVisible = false;
+            this.actionGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.actionGrid.Size = new System.Drawing.Size(469, 394);
             this.actionGrid.TabIndex = 5;
             // 
@@ -126,7 +128,10 @@
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
+            this.MaximumSize = new System.Drawing.Size(687, 473);
+            this.MinimumSize = new System.Drawing.Size(687, 473);
             this.Name = "LikeAhButNotMainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Not AH At All";
             ((System.ComponentModel.ISupportInitialize)(this.actionGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sequenceActionBindingSource)).EndInit();

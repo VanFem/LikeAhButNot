@@ -51,6 +51,7 @@
       <DependentUpon>ActionSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="Input\DelayAction.cs" />
+    <Compile Include="Input\KeyboardActionBase.cs" />
     <Compile Include="Input\MouseClickAction.cs" />
     <Compile Include="Input\MouseActionBase.cs" />
     <Compile Include="Input\MouseUpAction.cs" />

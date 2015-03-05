@@ -10,6 +10,8 @@ namespace LikeAhButNot.Input
         public int MoveX { get; set; }
         public int MoveY { get; set; }
 
+        protected string MoveInfo { get { return string.Format("Move mouse to {0}, {1}", MoveX, MoveY); } }
+        
         public override string Type
         {
             get { return "Mouse"; }

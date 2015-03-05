@@ -373,5 +373,135 @@ namespace WindowsInput
         }
 
         #endregion
+
+
+        #region MouseSimulation 
+
+        /// <summary>
+        /// Simulates mouse click.
+        /// </summary>
+        /// <param name="button">Specifies which button to click.</param>
+        public static void SimulateMouseClick(MouseButtonType button)
+        {
+            var mouseInput = new INPUT();
+            mouseInput.Type = (UInt32)InputType.MOUSE;
+            mouseInput.Data.Mouse.X = 0;
+            mouseInput.Data.Mouse.Y = 0;
+            switch (button)
+            {
+                case MouseButtonType.LeftButton:
+                    mouseInput.Data.Mouse.Flags = (uint) (MouseFlag.LEFTDOWN | MouseFlag.MOVE);
+                    break;
+                case MouseButtonType.RightButton:
+                    mouseInput.Data.Mouse.Flags = (uint)(MouseFlag.RIGHTDOWN | MouseFlag.MOVE);
+                    break;
+                case MouseButtonType.MiddleButton:
+                    mouseInput.Data.Mouse.Flags = (uint)(MouseFlag.MIDDLEDOWN | MouseFlag.MOVE);
+                    break;
+                case MouseButtonType.NoClick:
+                    
+                    break;
+            }
+            mouseInput.Data.Mouse.Flags = (uint)(MouseFlag.MOVE);
+            mouseInput.Data.Mouse.MouseData = 0;
+            INPUT[] inputList = new INPUT[1];
+            inputList[0] = mouseInput;
+
+            var numberOfSuccessfulInputs = SendInput(1, inputList, Marshal.SizeOf(new INPUT()));
+            if (numberOfSuccessfulInputs == 0) { throw new Exception("Failed to send mouse movement.");}
+
+            switch (button)
+            {
+                case MouseButtonType.LeftButton:
+                    mouseInput.Data.Mouse.Flags = (uint) (MouseFlag.LEFTDOWN);
+                    break;
+                case MouseButtonType.RightButton:
+                    mouseInput.Data.Mouse.Flags = (uint) (MouseFlag.RIGHTDOWN);
+                    break;
+                case MouseButtonType.MiddleButton:
+                    mouseInput.Data.Mouse.Flags = (uint) (MouseFlag.MIDDLEDOWN);
+                    break;
+                case MouseButtonType.NoClick:
+                    return;
+            }
+
+            numberOfSuccessfulInputs = SendInput(1, inputList, Marshal.SizeOf(new INPUT()));
+            if (numberOfSuccessfulInputs == 0) { throw new Exception("Failed to send mouse down event."); }
+
+            switch (button)
+            {
+                case MouseButtonType.LeftButton:
+                    mouseInput.Data.Mouse.Flags = (uint)(MouseFlag.LEFTUP);
+                    break;
+                case MouseButtonType.RightButton:
+                    mouseInput.Data.Mouse.Flags = (uint)(MouseFlag.RIGHTUP);
+                    break;
+                case MouseButtonType.MiddleButton:
+                    mouseInput.Data.Mouse.Flags = (uint)(MouseFlag.MIDDLEUP);
+                    break;
+                case MouseButtonType.NoClick:
+                    return;
+            }
+
+            numberOfSuccessfulInputs = SendInput(1, inputList, Marshal.SizeOf(new INPUT()));
+            if (numberOfSuccessfulInputs == 0) { throw new Exception("Failed to send mouse down event."); }
+        }
+
+        /// <summary>
+        /// Simulates mouse button press
+        /// </summary>
+        /// <param name="button"></param>
+        public static void SimulateMouseDown(MouseButtonType button)
+        {
+            var mouseInput = new INPUT();
+            mouseInput.Type = (UInt32)InputType.MOUSE;
+            mouseInput.Data.Mouse.X = 0;
+            mouseInput.Data.Mouse.Y = 0;
+            mouseInput.Data.Mouse.Flags = (uint)(MouseFlag.MOVE);
+            mouseInput.Data.Mouse.MouseData = 0;
+            INPUT[] inputList = new INPUT[1];
+            inputList[0] = mouseInput;
+
+            var numberOfSuccessfulInputs = SendInput(1, inputList, Marshal.SizeOf(new INPUT()));
+            if (numberOfSuccessfulInputs == 0) { throw new Exception("Failed to send mouse movement."); }
+
+            switch (button)
+            {
+                case MouseButtonType.LeftButton:
+                    mouseInput.Data.Mouse.Flags = (uint)(MouseFlag.LEFTDOWN);
+                    break;
+                case MouseButtonType.RightButton:
+                    mouseInput.Data.Mouse.Flags = (uint)(MouseFlag.RIGHTDOWN);
+                    break;
+                case MouseButtonType.MiddleButton:
+                    mouseInput.Data.Mouse.Flags = (uint)(MouseFlag.MIDDLEDOWN);
+                    break;
+                case MouseButtonType.NoClick:
+                    return;
+            }
+
+            numberOfSuccessfulInputs = SendInput(1, inputList, Marshal.SizeOf(new INPUT()));
+            if (numberOfSuccessfulInputs == 0) { throw new Exception("Failed to send mouse down event."); }
+
+            switch (button)
+            {
+                case MouseButtonType.LeftButton:
+                    mouseInput.Data.Mouse.Flags = (uint)(MouseFlag.LEFTUP);
+                    break;
+                case MouseButtonType.RightButton:
+                    mouseInput.Data.Mouse.Flags = (uint)(MouseFlag.RIGHTUP);
+                    break;
+                case MouseButtonType.MiddleButton:
+                    mouseInput.Data.Mouse.Flags = (uint)(MouseFlag.MIDDLEUP);
+                    break;
+                case MouseButtonType.NoClick:
+                    return;
+            }
+
+            numberOfSuccessfulInputs = SendInput(1, inputList, Marshal.SizeOf(new INPUT()));
+            if (numberOfSuccessfulInputs == 0) { throw new Exception("Failed to send mouse down event."); }
+        }
+
+        #endregion
     }
 }

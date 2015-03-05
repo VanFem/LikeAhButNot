@@ -11,7 +11,13 @@ namespace LikeAhButNot.Input
     {
         public override string Info
         {
-            get { return string.Format("Click mouse {0}", Enum.GetName(typeof(MouseButtonType), Button)); }
+            get { return string.Format("{1}Click mouse {0}", Enum.GetName(typeof(MouseButtonType), Button),MoveMouse?MoveInfo+"; ":""); }
+        }
+
+        public override void DoAction()
+        {
+            base.DoAction();
+            
         }
     }
 }

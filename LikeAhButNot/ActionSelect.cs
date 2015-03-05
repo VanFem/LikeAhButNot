@@ -20,14 +20,32 @@ namespace LikeAhButNot
         {
             InitializeComponent();
             cmbVKC.DataSource = Enum.GetValues(typeof (VirtualKeyCode));
-            cmbMouseClickType
+            cmbMouseClickType.DataSource = Enum.GetValues(typeof (MouseButtonType));
+            radKeyboardPress.Checked = true;
+            radMouseClick.Checked = true;
             radKeyboardGroup.Checked = true;
-            SetActiveGroup(SetupGroup.KeyboardSetup);
         }
 
         private void btnOk_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
+            if (radKeyboardGroup.Checked)
+            {
+                ReadKeyboardAction();
+            }
+            else if (radMouseGroup.Checked)
+            {
+                ReadMouseAction();
+            }
+            else if (radDelayGroup.Checked)
+            {
+                ReadDelayAction();
+            }
+            else
+            {
+                DialogResult = DialogResult.Cancel;
+            }
+
             Close();
         }
 
@@ -54,7 +72,37 @@ namespace LikeAhButNot
             action.MoveMouse = chkMoveMouse.Checked;
             action.MoveX = (int) numMouseMoveX.Value;
             action.MoveY = (int) numMouseMoveY.Value;
-            action.Button = cmbMouseClickType.SelectedIndex;
+            action.Button = (MouseButtonType) Enum.Parse(typeof(MouseButtonType), cmbMouseClickType.SelectedValue.ToString());
+            SetAction = action;
+        }
+
+        private void ReadKeyboardAction()
+        {
+            KeyboardActionBase action;
+            if (radKeyboardDown.Checked)
+            {
+                action = new KeyDownAction();
+            }
+            else if (radKeyboardPress.Checked)
+            {
+                action = new KeyPressAction();
+            }
+            else if (radKeyboardUp.Checked)
+            {
+                action = new KeyUpAction();
+            }
+            else
+            {
+                throw new ArgumentException("Keyboard event type could not be determined.");
+            }
+
+            action.KeyCode = (VirtualKeyCode) Enum.Parse(typeof (VirtualKeyCode), cmbVKC.SelectedValue.ToString());
+            SetAction = action;
+        }
+
+        private void ReadDelayAction()
+        {
+            SetAction = new DelayAction() {DelayTime = (int) numDelay.Value};
         }
 
         private void SetActiveGroup(SetupGroup group)
