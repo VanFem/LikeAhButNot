@@ -12,8 +12,15 @@ namespace LikeAhButNot.Input
     {
         public SequenceAction NextAction { get; set; }
 
-        public virtual string Type { get; set; }
-        public virtual string Info { get; set; }
+        public virtual string Type
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public virtual string Info
+        {
+            get { throw new NotImplementedException(); }
+        }
 
 
         public virtual void DoAction()

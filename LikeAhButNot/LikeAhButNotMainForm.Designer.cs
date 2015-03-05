@@ -34,9 +34,9 @@
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.actionGrid = new System.Windows.Forms.DataGridView();
-            this.sequenceActionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.infoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sequenceActionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.actionGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sequenceActionBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -78,8 +78,10 @@
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // actionGrid
             // 
+            this.actionGrid.AllowUserToAddRows = false;
+            this.actionGrid.AllowUserToDeleteRows = false;
             this.actionGrid.AutoGenerateColumns = false;
             this.actionGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.actionGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -88,12 +90,10 @@
             this.actionGrid.DataSource = this.sequenceActionBindingSource;
             this.actionGrid.Location = new System.Drawing.Point(12, 12);
             this.actionGrid.Name = "actionGrid";
+            this.actionGrid.ReadOnly = true;
+            this.actionGrid.RowHeadersVisible = false;
             this.actionGrid.Size = new System.Drawing.Size(469, 394);
             this.actionGrid.TabIndex = 5;
-            // 
-            // sequenceActionBindingSource
-            // 
-            this.sequenceActionBindingSource.DataSource = typeof(LikeAhButNot.Input.SequenceAction);
             // 
             // typeDataGridViewTextBoxColumn
             // 
@@ -101,6 +101,7 @@
             this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
             this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
             this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            this.typeDataGridViewTextBoxColumn.ReadOnly = true;
             this.typeDataGridViewTextBoxColumn.Width = 56;
             // 
             // infoDataGridViewTextBoxColumn
@@ -109,6 +110,11 @@
             this.infoDataGridViewTextBoxColumn.DataPropertyName = "Info";
             this.infoDataGridViewTextBoxColumn.HeaderText = "Info";
             this.infoDataGridViewTextBoxColumn.Name = "infoDataGridViewTextBoxColumn";
+            this.infoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sequenceActionBindingSource
+            // 
+            this.sequenceActionBindingSource.DataSource = typeof(LikeAhButNot.Input.SequenceAction);
             // 
             // LikeAhButNotMainForm
             // 

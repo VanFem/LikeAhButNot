@@ -11,6 +11,16 @@ namespace LikeAhButNot.Input
     {
         public VirtualKeyCode KeyCode { get; set; }
 
+        public override string Info
+        {
+            get { return string.Format("Key {0} up", Enum.GetName(typeof(VirtualKeyCode), KeyCode)); }
+        }
+
+        public override string Type
+        {
+            get { return "Keyboard"; }
+        }
+
         public override void DoAction()
         {
             InputSimulator.SimulateKeyUp(KeyCode);

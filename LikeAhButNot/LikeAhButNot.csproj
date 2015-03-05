@@ -52,6 +52,7 @@
     </Compile>
     <Compile Include="Input\DelayAction.cs" />
     <Compile Include="Input\MouseClickAction.cs" />
+    <Compile Include="Input\MouseActionBase.cs" />
     <Compile Include="Input\MouseUpAction.cs" />
     <Compile Include="Input\MouseDownAction.cs" />
     <Compile Include="Input\KeyDownAction.cs" />

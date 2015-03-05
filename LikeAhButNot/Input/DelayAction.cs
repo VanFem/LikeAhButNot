@@ -11,6 +11,15 @@ namespace LikeAhButNot.Input
     {
         public int DelayTime { get; set; }
 
+        public override string Info
+        {
+            get { return string.Format("Wait for {0}ms", DelayTime); }
+        }
+
+        public override string Type
+        {
+            get { return "Delay"; }
+        }
         public override void DoAction()
         {
             Thread.Sleep(DelayTime);

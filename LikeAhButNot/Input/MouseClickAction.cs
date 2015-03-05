@@ -7,12 +7,11 @@ using WindowsInput;
 
 namespace LikeAhButNot.Input
 {
-    public class MouseClickAction : SequenceAction
+    public class MouseClickAction : MouseActionBase
     {
-        public int Button { get; set; }
-
-        public override void DoAction()
+        public override string Info
         {
+            get { return string.Format("Click mouse {0}", Enum.GetName(typeof(MouseButtonType), Button)); }
         }
     }
 }
